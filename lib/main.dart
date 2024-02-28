@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_assignment/Assignment/Email%20Registeration.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      home: AnimatedSplashScreen(
+        centered: true,
+        splash: Image.asset(
+          'assets/images/splash_screen.png',
+        ),
+        nextScreen: EmailReg(),
+        splashTransition: SplashTransition.rotationTransition,
+        backgroundColor: Color.fromRGBO(143, 148, 251, 1),
       ),
-      home: EmailReg(),
     );
   }
 }

@@ -20,42 +20,62 @@ class _EmailRegState extends State<EmailReg> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.cyan,
-        title: Center(child: Text("Email Registeration")),
-      ),
       body: Container(
         padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
         child: Column(
           children: [
-            TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.person_outline),
-                  hintText: 'Enter your email',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide:
-                          BorderSide(width: 10, style: BorderStyle.none))),
+            Container(
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/background.png'),
+                      fit: BoxFit.fill)),
+            ),
+            Container(
+              width: 350,
+              padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 10),
+              child: TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person_outline),
+                    hintText: 'Enter your email',
+                    hintStyle: TextStyle(color: Colors.grey[700]),
+                    border: OutlineInputBorder(
+                        // borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                            width: 5,
+                            style: BorderStyle.none,
+                            color: Colors.grey.shade50))),
+              ),
+            ),
+            Container(
+              width: 350,
+              padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+              child: TextFormField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock_outline),
+                    hintText: 'Enter password',
+                    hintStyle: TextStyle(color: Colors.grey[700]),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 5,
+                            color: Colors.grey.shade50,
+                            style: BorderStyle.none))),
+              ),
             ),
             SizedBox(
               height: 20,
             ),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline),
-                  hintText: 'Enter password',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide:
-                          BorderSide(width: 10, style: BorderStyle.none))),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(2),
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(143, 148, 251, 1),
+                    Color.fromRGBO(143, 148, 251, .6),
+                  ])),
+              child: ElevatedButton(
                 onPressed: () {
                   String email = emailController.text.toString();
                   String password = passwordController.text.toString();
@@ -80,8 +100,22 @@ class _EmailRegState extends State<EmailReg> {
                 },
                 child: Text(
                   "Signin",
-                  style: TextStyle(fontSize: 18),
-                )),
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  primary: Colors.transparent, // Make the button transparent
+                  padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 50), // Optional: Adjust padding as needed
+                ),
+              ),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -90,25 +124,40 @@ class _EmailRegState extends State<EmailReg> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have account? "),
+                  Text(
+                    "Don't have account? ",
+                  ),
                   SizedBox(
                     width: 5,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => signup()));
-                    },
-                    child: Text(
-                      "Signup",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        gradient: LinearGradient(colors: [
+                          Color.fromRGBO(143, 148, 251, 1),
+                          Color.fromRGBO(143, 148, 251, .6),
+                        ])),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => signup()));
+                      },
+                      child: Text(
+                        "Signup",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
-                      primary: Colors.cyan,
-                      onPrimary: Colors.white, // Change the text color
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                        primary:
+                            Colors.transparent, // Make the button transparent
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                      ),
                     ),
                   ),
                 ],

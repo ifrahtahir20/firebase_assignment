@@ -38,6 +38,7 @@ dependencies:
   firebase_core: ^2.25.4
   google_sign_in: ^6.2.1
   firebase_messaging: ^14.7.15
+  animated_splash_screen: ^1.1.0
 
 
 dev_dependencies:
@@ -67,6 +68,9 @@ flutter:
     - assets/images/googlelogo.jpg
     - assets/images/phone_icon.png
     - assets/images/anonymous.jpg
+    - assets/images/splash_screen.png
+    - assets/images/screen_image.png
+    - assets/images/background.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
